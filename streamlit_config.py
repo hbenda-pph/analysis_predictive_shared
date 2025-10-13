@@ -2,12 +2,16 @@
 Streamlit Configuration
 =======================
 
-Estilos y configuraciones compartidas para dashboards de Streamlit
-en proyectos de análisis predictivo.
+Estilos compartidos simples y mantenibles para todos los dashboards.
 
 Uso:
     from streamlit_config import apply_standard_styles
     apply_standard_styles()
+    
+Convenciones:
+    - h2: Título principal del dashboard
+    - h3: Secciones principales
+    - h4: Subsecciones
 """
 
 import streamlit as st
@@ -15,44 +19,43 @@ import streamlit as st
 
 def apply_standard_styles():
     """
-    Aplica estilos CSS estándar para dashboards de análisis predictivo.
+    Aplica estilos CSS estándar simples para todos los dashboards.
     
-    Características:
-    - Títulos compactos y profesionales
-    - Espacios reducidos entre elementos
-    - Tablas con fuente legible
-    - Métricas compactas
-    - Gráficos optimizados
-    - Presentación científica y sobria
+    Convenciones unificadas:
+    - Todos los dashboards usan h2 para el título principal
+    - Todos los dashboards usan h3 para secciones
+    - Todos los dashboards usan h4 para subsecciones
     """
     st.markdown("""
     <style>
         /* ============================================
-           TÍTULOS Y ENCABEZADOS
+           TÍTULOS - Convención unificada
            ============================================ */
-        h1 {
-            font-size: 1.8rem !important;
-            margin-bottom: 0.5rem !important;
-            margin-top: 0.8rem !important;
-            font-weight: 600 !important;
-        }
+        /* h2: TÍTULO PRINCIPAL del dashboard */
         h2 {
-            font-size: 1.5rem !important;
-            margin-bottom: 0.4rem !important;
-            margin-top: 0.6rem !important;
+            font-size: 1.75rem !important;
             font-weight: 600 !important;
+            margin-bottom: 0.5rem !important;
+            margin-top: 0.75rem !important;
+            padding: 0.5rem 0px !important;
         }
+        
+        /* h3: SECCIONES principales */
         h3 {
             font-size: 1.3rem !important;
+            font-weight: 600 !important;
             margin-bottom: 0.4rem !important;
             margin-top: 0.6rem !important;
-            font-weight: 600 !important;
+            padding: 0.4rem 0px !important;
         }
+        
+        /* h4: SUBSECCIONES */
         h4 {
             font-size: 1.1rem !important;
+            font-weight: 600 !important;
             margin-bottom: 0.3rem !important;
             margin-top: 0.5rem !important;
-            font-weight: 600 !important;
+            padding: 0.3rem 0px !important;
         }
         
         /* ============================================
@@ -70,14 +73,10 @@ def apply_standard_styles():
         }
         
         /* ============================================
-           TABLAS Y DATAFRAMES
+           TABLAS
            ============================================ */
         .stDataFrame {
             font-size: 11px !important;
-        }
-        
-        .stDataFrame table {
-            width: 100% !important;
         }
         
         .stDataFrame th {
@@ -91,7 +90,7 @@ def apply_standard_styles():
         }
         
         /* ============================================
-           MÉTRICAS (st.metric)
+           MÉTRICAS
            ============================================ */
         [data-testid="stMetricValue"] {
             font-size: 1.8rem !important;
@@ -101,11 +100,6 @@ def apply_standard_styles():
         [data-testid="stMetricLabel"] {
             font-size: 0.9rem !important;
             font-weight: 500 !important;
-            color: #31333F !important;
-        }
-        
-        [data-testid="stMetricDelta"] {
-            font-size: 0.85rem !important;
         }
         
         div[data-testid="metric-container"] {
@@ -113,7 +107,6 @@ def apply_standard_styles():
             border: 1px solid #e0e0e0 !important;
             padding: 12px 16px !important;
             border-radius: 6px !important;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
         }
         
         /* ============================================
@@ -126,10 +119,6 @@ def apply_standard_styles():
         /* ============================================
            BOTONES
            ============================================ */
-        .stButton {
-            margin-bottom: 0.5rem !important;
-        }
-        
         .stButton > button {
             width: 100% !important;
             border-radius: 6px !important;
@@ -137,57 +126,24 @@ def apply_standard_styles():
             padding: 0.5rem 1rem !important;
         }
         
-        .stButton > button[kind="primary"] {
-            background-color: #0066cc !important;
-            border-color: #0066cc !important;
-        }
-        
-        .stButton > button[kind="primary"]:hover {
-            background-color: #0052a3 !important;
-            border-color: #0052a3 !important;
-        }
-        
         /* ============================================
-           SELECTBOX Y CONTROLES
+           CONTROLES (selectbox, radio, etc.)
            ============================================ */
-        .stSelectbox {
-            margin-bottom: 0.8rem !important;
-        }
-        
-        .stSelectbox label {
+        .stSelectbox label,
+        .stRadio label,
+        .stCheckbox label {
             font-weight: 500 !important;
             font-size: 0.95rem !important;
         }
         
-        .stRadio {
-            margin-bottom: 0.8rem !important;
-        }
-        
-        .stCheckbox {
-            margin-bottom: 0.5rem !important;
-        }
-        
         /* ============================================
-           CAPTIONS Y TEXTOS PEQUEÑOS
-           ============================================ */
-        .stCaption {
-            font-size: 0.85rem !important;
-            margin-bottom: 0.3rem !important;
-            color: #6c757d !important;
-        }
-        
-        /* ============================================
-           INFO BOXES (info, warning, success, error)
+           INFO BOXES
            ============================================ */
         .stAlert {
             padding: 0.75rem 1rem !important;
             margin-bottom: 0.8rem !important;
             border-radius: 6px !important;
             font-size: 0.9rem !important;
-        }
-        
-        div[data-testid="stAlert"] {
-            padding: 0.75rem 1rem !important;
         }
         
         /* ============================================
@@ -210,107 +166,43 @@ def apply_standard_styles():
         section[data-testid="stSidebar"] > div {
             padding-top: 1.5rem !important;
         }
-        
-        section[data-testid="stSidebar"] .stSelectbox label {
-            font-size: 0.9rem !important;
-        }
-        
-        /* ============================================
-           GRÁFICOS DE MATPLOTLIB
-           ============================================ */
-        .stPlotlyChart, .stPyplot {
-            margin-bottom: 1rem !important;
-        }
-        
-        /* Reducir espacio alrededor de gráficos */
-        div[data-testid="stImage"] {
-            margin-bottom: 0.5rem !important;
-        }
-        
-        /* ============================================
-           TABS
-           ============================================ */
-        .stTabs [data-baseweb="tab-list"] {
-            gap: 8px !important;
-        }
-        
-        .stTabs [data-baseweb="tab"] {
-            padding: 8px 16px !important;
-            font-weight: 500 !important;
-        }
-        
-        /* ============================================
-           EXPANDERS
-           ============================================ */
-        .streamlit-expanderHeader {
-            font-weight: 500 !important;
-            font-size: 1rem !important;
-        }
-        
-        /* ============================================
-           SPINNERS Y LOADING
-           ============================================ */
-        .stSpinner > div {
-            border-color: #0066cc !important;
-        }
-        
-        /* ============================================
-           AJUSTES RESPONSIVOS
-           ============================================ */
-        @media (max-width: 768px) {
-            .block-container {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-            
-            [data-testid="stMetricValue"] {
-                font-size: 1.5rem !important;
-            }
-        }
     </style>
     """, unsafe_allow_html=True)
 
 
 def get_standard_colors():
     """
-    Retorna los colores estándar para visualizaciones.
+    Colores estándar para visualizaciones.
     
     Returns:
         dict: Diccionario con colores estándar
     """
     return {
-        # Colores para variabilidad
-        'average_mix': '#fff2cc',      # Amarillo
-        'monthly_values': '#e8f4f8',   # Azul claro
-        'positive_var': '#d4edda',     # Verde
-        'positive_text': '#155724',    # Verde oscuro
-        'negative_var': '#f8d7da',     # Rojo
-        'negative_text': '#721c24',    # Rojo oscuro
-        'neutral': '#f8f9fa',          # Gris
-        'company': '#f8f9fa',          # Gris para compañía
+        # Colores básicos
+        'primary': '#0066cc',
+        'secondary': '#6c757d',
+        'success': '#28a745',
+        'danger': '#dc3545',
+        'warning': '#ffc107',
+        'info': '#17a2b8',
         
-        # Colores para gráficos
-        'primary': '#0066cc',          # Azul principal
-        'secondary': '#6c757d',        # Gris
-        'success': '#28a745',          # Verde
-        'danger': '#dc3545',           # Rojo
-        'warning': '#ffc107',          # Amarillo
-        'info': '#17a2b8',             # Cian
+        # Para tablas de variabilidad
+        'positive': '#d4edda',
+        'negative': '#f8d7da',
+        'neutral': '#f8f9fa',
         
-        # Colores para inflection points
-        'peak': '#90EE90',             # Verde claro para picos
-        'valley': '#FFB6C1',           # Rosa claro para valles
-        'peak_dark': '#155724',        # Verde oscuro
-        'valley_dark': '#721c24'       # Rojo oscuro
+        # Para inflection points
+        'peak': '#90EE90',
+        'valley': '#FFB6C1'
     }
 
 
 def get_page_config():
     """
-    Retorna la configuración estándar de página para Streamlit.
+    Configuración estándar de página.
     
     Returns:
-        dict: Diccionario con configuración de página
+        dict: Configuración para st.set_page_config()
     """
     return {
         'layout': 'wide',
