@@ -29,6 +29,26 @@ def apply_standard_styles():
     st.markdown("""
     <style>
         /* ============================================
+           FUENTE IBM PLEX (Científica y profesional)
+           Para revertir: Comentar esta sección completa
+           ============================================ */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+        
+        /* Aplicar fuente a todo el dashboard */
+        html, body, [class*="css"], * {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+        }
+        
+        /* Fuente monoespaciada para números y datos */
+        .stDataFrame, 
+        [data-testid="stMetricValue"],
+        .stDataFrame td,
+        code {
+            font-family: 'IBM Plex Mono', 'Consolas', monospace !important;
+            font-variant-numeric: tabular-nums !important;
+        }
+        
+        /* ============================================
            TÍTULOS - Convención unificada
            ============================================ */
         /* h2: TÍTULO PRINCIPAL del dashboard */
@@ -59,13 +79,19 @@ def apply_standard_styles():
         }
         
         /* ============================================
-           ESPACIADO GENERAL
+           ESPACIADO GENERAL Y FONDO
            ============================================ */
+        /* Fondo gris suave tipo paper científico */
+        .main {
+            background-color: #fafafa !important;
+        }
+        
         .block-container {
             padding-top: 1.5rem !important;
             padding-bottom: 1rem !important;
             padding-left: 2rem !important;
             padding-right: 2rem !important;
+            background-color: #fafafa !important;
         }
         
         .element-container {
